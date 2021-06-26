@@ -1,1 +1,9 @@
-<p>menu works!</p>
+<!-- Toolbar -->
+
+<div class="toolbar" role="banner">
+  <ul>
+    <li *ngFor='let link of this.links'>
+      <a href='{{ link.href }}'> {{ link.text }} </a>
+    </li>
+  </ul>
+</div>
