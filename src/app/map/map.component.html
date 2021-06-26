@@ -1,0 +1,8 @@
+<div class="container">
+  <p>map works!</p>
+  <section *ngIf='tileset$ | async as tileset'>
+    <span *ngFor='let tile of tileset'>
+      {{ tile.symbol }}
+    </span>
+  </section>
+</div>
