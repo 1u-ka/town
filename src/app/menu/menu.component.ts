@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Comms } from '../comms.service';
+import { Tile } from '../tile.model';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class MenuComponent implements OnInit {
 
+  contextual: any;
   links: any[];
 
-  constructor() { }
+  constructor(
+    protected comms: Comms
+  ) { }
 
   /**
    * @todo dynamically fetch navigation from a backend
@@ -20,6 +25,7 @@ export class MenuComponent implements OnInit {
       { text: 'map', href: '/' },
       { text: 'about', href: '/page/about' }
     ]
-  }
 
+    this.comms.recontextualize.subscribe((e: any) => this.contextual = e)
+  }
 }

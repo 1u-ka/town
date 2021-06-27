@@ -3,6 +3,7 @@
   <section *ngIf='tileset$ | async as tileset'>
     <span *ngFor='let tile of tileset'>
       {{ tile.symbol }}
+      <a href=# (click)='onTileSelection(tile)'>{{ tile.id }}</a>
     </span>
   </section>
 </div>

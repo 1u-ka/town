@@ -5,5 +5,12 @@
     <li *ngFor='let link of this.links'>
       <a href='{{ link.href }}'> {{ link.text }} </a>
     </li>
+    <div *ngIf='contextual'>
+      <hr />
+      {{ contextual.id }} : {{ contextual.symbol }}
+      <ul>
+      <li *ngFor='let option of contextual.options'>{{ option.text }}</li>
+      </ul>
+    </div>
   </ul>
 </div>
