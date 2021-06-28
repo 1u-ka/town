@@ -1,0 +1,33 @@
+#menu-wrap {
+  position: fixed;
+
+  z-index: 1;
+}
+#menu {
+  position: absolute;
+
+  height: 100%;
+  width: 50%;
+  padding: 5em;
+  z-index: 2;
+
+  background-color: white;
+  border-right: 1px dashed #222;
+}
+
+#menu-activator {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+
+  transform: rotate(90deg);
+  display: inline-block;
+  font-size: 2em;
+  z-index: 2;
+
+  cursor: pointer;
+}
+
+#menu ul li {
+  list-style-type: none;
+}

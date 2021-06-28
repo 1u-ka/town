@@ -13,6 +13,9 @@ export class MenuComponent implements OnInit {
   contextual: any;
   links: any[];
 
+  /** */
+  visible: boolean = false;
+
   constructor(
     protected comms: Comms
   ) { }
@@ -27,5 +30,11 @@ export class MenuComponent implements OnInit {
     ]
 
     this.comms.recontextualize.subscribe((e: any) => this.contextual = e)
+  }
+
+  /** */
+  onRenderToggle(e: any) : void
+  {
+    this.visible = !this.visible
   }
 }

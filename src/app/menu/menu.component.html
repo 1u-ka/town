@@ -1,16 +1,18 @@
 <!-- Toolbar -->
-
-<div class="toolbar" role="banner">
-  <ul>
-    <li *ngFor='let link of this.links'>
-      <a href='{{ link.href }}'> {{ link.text }} </a>
-    </li>
-    <div *ngIf='contextual'>
-      <hr />
-      {{ contextual.id }} : {{ contextual.symbol }}
-      <ul>
-      <li *ngFor='let option of contextual.options'>{{ option.text }}</li>
-      </ul>
-    </div>
-  </ul>
+<div class="menu-wrap">
+  <div *ngIf="visible" id="menu" class="toolbar" role="banner">
+    <ul>
+      <li *ngFor='let link of this.links'>
+        <a href='{{ link.href }}'> {{ link.text }} </a>
+      </li>
+      <div *ngIf='contextual'>
+        <hr />
+        {{ contextual.id }} : {{ contextual.symbol }}
+        <ul>
+          <li *ngFor='let option of contextual.options'>{{ option.text }}</li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <a id="menu-activator" (click)="onRenderToggle($event)">|||</a>
 </div>
