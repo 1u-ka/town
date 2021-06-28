@@ -14,10 +14,17 @@ import { Tile } from '../tile.model';
 export class MapComponent implements OnInit {
 
   /** */
-  id: number;
+  private id: number;
 
-  /** */
-  tileset$: Observable<Tile[]>;
+  /**
+   * @todo   map header contents shouldn't be externally accessible
+   */
+  public preface: string;
+
+  /**
+   * @todo   map tiles should not be externally accessible
+   */
+  public tileset$: Observable<Tile[]>;
 
   /** */
   constructor(
@@ -33,8 +40,8 @@ export class MapComponent implements OnInit {
                           .paramMap
                           .get('id'))
 
-    this.id = mid ? mid : 1
-
+    this.id       = mid ? mid : 1
+    this.comms.get('map.json').subscribe(r => this.preface = r.preface)
     this.tileset$ = this.comms.get('tiles.json')
   }
 
