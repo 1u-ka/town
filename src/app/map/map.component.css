@@ -2,13 +2,23 @@ section {
   display: inline-block;
 }
 .tile {
-  background: green;
+  background:#aaa;
   display: inline-block;
   width: 32px;
   height: 32px;
 
   margin: 0;
 }
+/**
+ * @todo   sprites
+ */
+.Grass {
+  background: green;
+}
+.Museum {
+  background: #888;
+}
+
 .tile:hover {
-  border: 1px dashed #222;
+  border: 1px dashed #fff;
 }

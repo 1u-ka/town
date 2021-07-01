@@ -63,7 +63,7 @@ export class MapComponent implements OnInit {
 
     for (let x = 0; x < width; x++) {
       for (let y = 0; y < height; y++) {
-        const blank = { id: 1, terrain: 'grass', symbol: `${x}@${y}` }
+        const blank = { id: 1, terrain: 'grass', symbol: `Grass` }
 
         if (typeof fetched[x] == 'undefined') {
           this.tileset.push(blank)

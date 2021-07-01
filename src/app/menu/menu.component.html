@@ -5,12 +5,44 @@
       <li *ngFor='let link of this.links'>
         <a href='{{ link.href }}'> {{ link.text }} </a>
       </li>
-      <div *ngIf='contextual'>
+      <div *ngIf='contextual' class="contextual-menu input-group-sm">
+
         <hr />
-        {{ contextual.id }} : {{ contextual.symbol }}
-        <ul>
-          <li *ngFor='let option of contextual.options'>{{ option.text }}</li>
-        </ul>
+
+        <div class="form-group row">
+          <label for="" class="col-form-label">Update tile:</label>
+          <!-- <div class="form-check">
+            <input class="form-check-input"
+              disabled
+              type="radio"
+              name="obj-selector"
+              id="obj-sel-none"
+              value="grass / none" />
+            <label class="form-check-label"
+              for="obj-sel-none">None (Grass)</label>
+          </div> -->
+
+          <div class="form-check">
+            <input class="form-check-input"
+              checked
+              type="radio"
+              name="obj-selector"
+              id="obj-sel-sym"
+              value="{{ contextual.symbol }}" />
+            <label class="form-check-label"
+              for="obj-sel-sym">{{ contextual.symbol }}</label>
+          </div>
+        </div>
+
+        <fieldset *ngIf="contextual.options" class="form-group row">
+          <label for="" class="col-form-label">Additionally:</label>
+          <div *ngFor='let option of contextual.options'>
+            <button class="btn"
+              id="{{ option.id }}">+</button>
+            <label class="form-check-label"for="{{ option.id }}">{{ option.text }}</label>
+          </div>
+        </fieldset>
+
       </div>
     </ul>
   </div>

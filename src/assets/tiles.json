@@ -1,10 +1,21 @@
 [
   [
     null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     {
         "id":1,
         "terrain":"center-center",
-        "symbol":"museum"
+        "symbol":"Museum",
+        "options":[
+          { "text": "add sponsor/investment round" },
+          { "text": "add submap" }
+        ]
     }
   ]
 ]

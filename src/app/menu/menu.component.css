@@ -8,7 +8,7 @@
 
   height: 100%;
   width: 50%;
-  padding: 5em;
+  padding-top: 10em;
   z-index: 2;
 
   background-color: white;
@@ -30,4 +30,8 @@
 
 #menu ul li {
   list-style-type: none;
+}
+
+.contextual-menu {
+  font-size: x-small;
 }
