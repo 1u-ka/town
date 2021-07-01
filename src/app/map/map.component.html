@@ -1,10 +1,7 @@
 <div class="container">
   <header *ngIf="preface">{{ preface }}</header>
   <hr />
-  <section *ngIf='tileset$ | async as tileset'>
-    <span *ngFor='let tile of tileset'>
-      {{ tile.symbol }}
-      <a href="#menu" (click)='onTileSelection(tile)'>{{ tile.id }}</a>
-    </span>
+  <section [attr.style]="style" *ngIf='tileset$ | async as tileset'>
+    <a href="#" (click)="onTileSelection(tile)" class="tile" *ngFor='let tile of tileset'></a>
   </section>
 </div>

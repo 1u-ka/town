@@ -1,0 +1,14 @@
+section {
+  display: inline-block;
+}
+.tile {
+  background: green;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+
+  margin: 0;
+}
+.tile:hover {
+  border: 1px dashed #222;
+}

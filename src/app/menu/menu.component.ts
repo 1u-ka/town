@@ -29,7 +29,10 @@ export class MenuComponent implements OnInit {
       { text: 'about', href: '/page/about' }
     ]
 
-    this.comms.recontextualize.subscribe((e: any) => this.contextual = e)
+    this.comms.recontextualize.subscribe((e: any) => {
+      this.contextual = e
+      this.visible    = true
+    })
   }
 
   /** */

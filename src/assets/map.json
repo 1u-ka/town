@@ -1,3 +1,5 @@
 {
-  "preface":"this map represents XYZ etc"
+  "width":   10,
+  "height":  10,
+  "preface": "this map represents XYZ etc"
 }
