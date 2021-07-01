@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
   /**
    * @todo   map tiles should not be externally accessible
    */
-  public tileset$: Observable<Tile[]>;
+  public tileset: Tile[] = [];
 
   /** */
   public style: string = 'line-height: 0;';
@@ -54,22 +54,26 @@ export class MapComponent implements OnInit {
   /**
    * @todo   de-hardcode tile widhts
    */
-  boot(props: Map) : void
+  async boot(props: Map) : Promise<void>
   {
-    let tileset = new Array
-
     const { width, height, preface } = props
+    const fetched = await this.comms.get('tiles.json').toPromise()
+
     this.preface = preface
 
-    for (let i = 1; i <= width; i++) {
-      for (let j = 1; j <= height; j++) {
-        tileset.push(
-          { id: 1, terrain: 'grass', symbol: `${j}@${i}` }
-        )
+    for (let x = 0; x < width; x++) {
+      for (let y = 0; y < height; y++) {
+        const blank = { id: 1, terrain: 'grass', symbol: `${x}@${y}` }
+
+        if (typeof fetched[x] == 'undefined') {
+          this.tileset.push(blank)
+          continue
+        }
+
+        this.tileset.push(fetched[x][y] || blank)
       }
     }
 
-    this.tileset$ = of(tileset)
     this.style += `width: ${width * 32}px;`
   }
 

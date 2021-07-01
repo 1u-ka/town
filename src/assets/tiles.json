@@ -1,7 +1,10 @@
 [
+  [
+    null,
     {
         "id":1,
         "terrain":"center-center",
         "symbol":"museum"
     }
+  ]
 ]
