@@ -11,16 +11,17 @@
 
         <div class="form-group row">
           <label for="" class="col-form-label">Update tile:</label>
-          <!-- <div class="form-check">
+          <div
+            *ngFor="let morph of contextual.morphs"
+            class="form-check">
             <input class="form-check-input"
-              disabled
               type="radio"
               name="obj-selector"
               id="obj-sel-none"
-              value="grass / none" />
+              value="{{ morph.symbol }}" />
             <label class="form-check-label"
-              for="obj-sel-none">None (Grass)</label>
-          </div> -->
+              for="obj-sel-none">{{ morph.symbol }}</label>
+          </div>
 
           <div class="form-check">
             <input class="form-check-input"
@@ -33,6 +34,8 @@
               for="obj-sel-sym">{{ contextual.symbol }}</label>
           </div>
         </div>
+
+
 
         <fieldset *ngIf="contextual.options" class="form-group row">
           <label for="" class="col-form-label">Additionally:</label>
