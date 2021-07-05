@@ -20,5 +20,5 @@ section {
 }
 
 .tile:hover {
-  border: 1px dashed #fff;
+  border-bottom: 1px dashed #fff;
 }
