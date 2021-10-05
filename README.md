@@ -6,9 +6,10 @@ See [Contributing](CONTRIBUTING.md) for development info.
 
 ## Contents
 
-  - [Roadmap](#roadmap)
+  - [Roadmap](#Roadmap)
+  - [Contributing](#Contributing]
 
-## Roadmap
+### Roadmap
 
 Planned roadmap for the project
 
@@ -31,3 +32,9 @@ Planned roadmap for the project
 
   - Jan
   - Feb
+
+### Contributing
+
+?
+
+See TODO.md
