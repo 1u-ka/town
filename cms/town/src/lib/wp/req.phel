@@ -1,0 +1,9 @@
+(ns iors-usd\lib\wp\req)
+
+(defn param
+  [req n]
+  (php/-> req (get_param n)))
+
+(defn route?
+  [req route]
+  (php/strstr (php/-> req (get_route)) route))

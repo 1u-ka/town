@@ -1,6 +1,13 @@
 (ns iors-usd\chain
+  (:require iors-usd\app\router :as router)
   (:use Exception))
 
+(defn run
+  [req]
+  (router/route req))
+
 (defn execute
-  []
-  "hello world")
+  [req]
+  (try
+    (run req)
+    (catch Exception e "NO")))
