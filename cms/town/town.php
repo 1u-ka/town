@@ -1,7 +1,4 @@
 <?php
-/**
- * Plugin Name: Town
- */
 require __DIR__ . '/vendor/autoload.php';
 
 use iors_usd\Router;
