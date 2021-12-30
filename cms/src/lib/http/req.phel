@@ -8,6 +8,10 @@
   [q]
   (php/-> q REQUEST_URI))
 
+(defn is-valid?
+  [data against]
+  false)
+
 (defn route?
   [q verb route]
   (let [rate 0]

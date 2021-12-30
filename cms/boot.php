@@ -20,9 +20,14 @@ class Main {
   /** */
   function handle()
   {
+    $json    = fn ($v) => json_decode(json_encode($v, JSON_NUMERIC_CHECK));
+    $q       = (object) $_SERVER;
+    $q->POST = $json($_POST);
+    $q->GET  = $json($_GET);
+
     return $this->callPhel('iors-usd\chain',
                            'execute',
-                           (object) $_SERVER);
+                           $q);
   }
 }
 

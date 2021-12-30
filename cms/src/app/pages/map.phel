@@ -1,5 +1,8 @@
 (ns iors-usd\app\pages\map
-  (:require iors-usd\app\admin\dashboard))
+  (:require iors-usd\lib\http\req)
+  (:require iors-usd\app\admin\dashboard)
+  (:use iors_usd\lib\struct\Validator)
+  (:use Exception))
 
 (defn get
   [q id]
@@ -24,4 +27,12 @@
 
 (defn store
   [q]
+  (let [invalidated
+        (-> (php/new Validator
+                     { "width" "integer"
+                      "height" "integer"
+                      "description" "string" })
+            (php/-> (invalid (php/-> q POST))))]
+    (if invalidated
+      (throw (php/new Exception invalidated))))
   "test")
