@@ -1,0 +1,18 @@
+(ns iors-usd\lib\http\templating
+  (:require phel\html :refer [html doctype]))
+
+(defn heading
+  []
+  [ :head [ :meta { :name "viewport"
+                   :content "width=device-width, initial-scale=1" } ]
+   [ :link { :rel "stylesheet"
+            :href "/assets/cdn/materialize.min.css" } ]
+   [ :link { :rel "stylesheet"
+            :href "/style.css" } ]])
+
+(defn render
+  [content]
+  (html (doctype :html5)
+        [ :html (heading)
+         [ :body
+          [ :div { :class "wrap" } content ]]]))

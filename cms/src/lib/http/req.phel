@@ -1,0 +1,16 @@
+(ns iors-usd\lib\http\req)
+
+(defn param
+  [q n]
+  (php/-> q n))
+
+(defn get-path
+  [q]
+  (php/-> q REQUEST_URI))
+
+(defn route?
+  [q verb route]
+  (let [rate 0]
+    (php/similar_text (get-path q) route rate)
+    (and (> rate 80)
+         (= (php/-> q REQUEST_METHOD) verb))))

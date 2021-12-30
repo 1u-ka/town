@@ -1,5 +1,0 @@
-(ns iors-usd\app\ctl\map)
-
-(defn get
-  [req id]
-  (php/sprintf "result for map nr %d" id))

@@ -10,4 +10,4 @@
   [req]
   (try
     (run req)
-    (catch Exception e "NO")))
+    (catch Exception e (php/-> e (getMessage)))))

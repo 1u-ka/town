@@ -1,0 +1,27 @@
+(ns iors-usd\app\pages\map
+  (:require iors-usd\app\admin\dashboard))
+
+(defn get
+  [q id]
+  (php/sprintf "result for map nr %d" id))
+
+(defn list
+  [q]
+  [5 2 3])
+
+(defn create
+  [q]
+  (dashboard/render [ :form { :method "POST" }
+                     [ :label "Width" ]
+                     [ :input { :type "number" :value 0 } ]
+
+                     [ :label "Height" ]
+                     [ :input { :type "number" :value 0 } ]
+
+                     [ :label "Description" ]
+                     [ :textarea { :name "description" }]
+                     [ :input { :type "submit" } ]]))
+
+(defn store
+  [q]
+  "test")

@@ -1,9 +1,0 @@
-(ns iors-usd\app\router
-  (:require iors-usd\app\ctl\map :as map)
-  (:require iors-usd\lib\wp\req :as wp-req))
-
-(defn route
-  [req]
-  (cond
-    (wp-req/route? req "map/get") (map/get req (wp-req/param req "id"))
-    :else 404))

@@ -1,0 +1,13 @@
+(ns iors-usd\app\admin\dashboard
+  (:require iors-usd\lib\http\templating))
+
+(defn navigation
+  []
+  [ :nav [ :a { :href "/admin/maps" } "maps" ]
+   [ :a { :href "/admin/tiles" } "tiles" ] ])
+
+(defn render
+  [contents]
+  (templating/render [ :div { :class "container" }
+                      (navigation)
+                      contents ]))

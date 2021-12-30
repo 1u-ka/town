@@ -1,0 +1,11 @@
+(ns iors-usd\app\pages\admin
+  (:require iors-usd\app\admin\dashboard)
+  (:require iors-usd\app\pages\map))
+
+(defn index
+  [q]
+  (dashboard/render "main"))
+
+(defn maps
+  [q]
+  (dashboard/render (map/list q)))
