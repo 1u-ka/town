@@ -19,21 +19,27 @@ class Validator {
   }
 
   /** */
-  function invalid(object $defs) : string
+  function invalid(object $defs) : ?string
   {
-    return json_encode($this->invalidate($defs));
+    if (! $invalid = $this->invalidate($defs)) {
+      return null;
+    }
+
+    return json_encode($invalid);
   }
 
   /** */
   private function invalidate(object $defs) : array
   {
+    $incorrect = [];
+
     if ($this->missing($defs)) {
       return $this->missing($defs);
     }
 
     foreach ($defs as $k => $v) {
       if (gettype($v) !== $this->params->find($k)) {
-        $incorrect[] = [ $k => gettype($v) ];
+        $incorrect[] = [ $k => sprintf('!%s', $this->params->find($k)) ];
       }
     }
 
