@@ -1,0 +1,35 @@
+(ns iors-usd\lib\struct\dynamic-table
+  (:require iors-usd\lib\http\templating :as t))
+
+(defn make-col
+  [col]
+  (t/render "<td>:col</td>" { :col col }))
+
+(defn make-row
+  [row]
+  (t/render "<tr>:cols</tr>"
+            { :cols (->> row
+                         (map make-col)
+                         (to-php-array)
+                         (php/implode "")) }))
+
+(defn make-header
+  [datum]
+  (t/render "<th>:header</th>"
+            { :header datum }))
+
+(defn render
+  [rows]
+  (t/render "<table>:headers<tbody>:rows</tbody></table>"
+            {
+             :headers (->> rows
+                            (first)
+                            (map make-header)
+                            (to-php-array)
+                            (php/implode ""))
+             :rows (->> rows
+                         (rest)
+                         (map make-row)
+                         (to-php-array)
+                         (php/implode ""))
+             }))

@@ -27,7 +27,6 @@ class Validator {
   /** */
   private function invalidate(object $defs) : array
   {
-
     if ($this->missing($defs)) {
       return $this->missing($defs);
     }

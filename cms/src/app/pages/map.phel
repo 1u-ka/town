@@ -1,7 +1,11 @@
 (ns iors-usd\app\pages\map
+  (:require iors-usd\lib\fs\csv)
   (:require iors-usd\lib\http\req)
+  (:require iors-usd\lib\http\templating)
+  (:require iors-usd\lib\struct\dynamic-table)
   (:require iors-usd\app\admin\dashboard)
   (:use iors_usd\lib\struct\Validator)
+  (:use Pinq\Collection)
   (:use Exception))
 
 (defn get
@@ -10,20 +14,25 @@
 
 (defn list
   [q]
-  [5 2 3])
+  (-> Collection
+      (php/:: (from (csv/load "maps.csv")))
+      (php/-> (asArray))
+      (dynamic-table/render)))
 
 (defn create
+  # @todo   use a partial template
   [q]
-  (dashboard/render [ :form { :method "POST" }
-                     [ :label "Width" ]
-                     [ :input { :type "number" :value 0 } ]
+  (dashboard/render "<form method='POST'>
+  <label>Width</label>
+  <input type='number' value=0 />
 
-                     [ :label "Height" ]
-                     [ :input { :type "number" :value 0 } ]
+  <label>Height</label>
+  <input type='number' value=0 />
 
-                     [ :label "Description" ]
-                     [ :textarea { :name "description" }]
-                     [ :input { :type "submit" } ]]))
+  <label>Description</label>
+  <textarea name='description'></textarea>
+  <input type='submit' />
+  </form>"))
 
 (defn store
   [q]

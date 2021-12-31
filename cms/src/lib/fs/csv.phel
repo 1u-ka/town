@@ -1,0 +1,9 @@
+(ns iors-usd\lib\fs\csv
+  (:use Exception))
+
+(defn load
+  [path]
+  (if-not (php/file_exists path)
+    (throw (php/new Exception "No such file or directory.")))
+  (->> (php/file path)
+       (php/array_map "str_getcsv")))
