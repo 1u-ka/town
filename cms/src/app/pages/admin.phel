@@ -8,4 +8,4 @@
 
 (defn maps
   [q]
-  (dashboard/render (map/list q)))
+  (dashboard/render (map/index q)))

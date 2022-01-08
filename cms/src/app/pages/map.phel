@@ -12,10 +12,10 @@
   [q id]
   (php/sprintf "result for map nr %d" id))
 
-(defn list
+(defn index
   [q]
   (-> Collection
-      (php/:: (from (csv/load "maps.csv")))
+      (php/:: (from (csv/gets "maps.csv")))
       (php/-> (asArray))
       (dynamic-table/render)))
 
@@ -44,4 +44,9 @@
             (php/-> (invalid (php/-> q POST))))]
     (if invalidated
       (throw (php/new Exception invalidated))))
-  "test")
+  (->> (php/-> q POST)
+       (php/get_object_vars)
+       (php/array_values)
+       (php-array-to-map)
+       (values)
+       (csv/puts "maps.csv")))
