@@ -32,9 +32,6 @@ spec:
         app: iors-usd
     spec:
       containers:
-        - name: ng
-          image: iors-usd-ng
-          imagePullPolicy: Never
         - name: api
           image: iors-usd-api
           imagePullPolicy: Never
