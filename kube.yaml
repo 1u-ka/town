@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iors-usd
+spec:
+  clusterIP: 10.43.0.8
+  selector:
+    app: iors-usd
+  ports:
+    - name: ng
+      protocol: TCP
+      port: 4200
+      targetPort: 4200
+    - name: api
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: iors-usd-pod
+spec:
+  serviceName: iors-usd-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iors-usd
+  template:
+    metadata:
+      labels:
+        app: iors-usd
+    spec:
+      containers:
+        - name: ng
+          image: iors-usd-ng
+          imagePullPolicy: Never
+        - name: api
+          image: iors-usd-api
+          imagePullPolicy: Never
