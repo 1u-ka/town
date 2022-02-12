@@ -75,13 +75,22 @@ spec:
         - name: cms
           image: town-cms
           imagePullPolicy: Never
+          volumeMounts:
+            - name: shared
+              mountPath: /opt/town/cms
+              subPath: .
         - name: nginx
           image: nginx
           volumeMounts:
             - name: nginx-config
               mountPath: /etc/nginx/conf.d/nginx.conf
               subPath: town.conf
+            - name: shared
+              mountPath: /opt/town/cms
+              subPath: .
       volumes:
         - name: nginx-config
           configMap:
             name: nginx-configmap
+        - name: shared
+          emptyDir: {}
