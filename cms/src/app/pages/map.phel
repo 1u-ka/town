@@ -1,9 +1,9 @@
-(ns iors-usd\app\pages\map
-  (:require iors-usd\lib\fs\csv)
-  (:require iors-usd\lib\http\req)
-  (:require iors-usd\lib\http\templating)
-  (:require iors-usd\lib\struct\dynamic-table)
-  (:require iors-usd\app\admin\dashboard)
+(ns town\app\pages\map
+  (:require town\lib\fs\csv)
+  (:require town\lib\http\req)
+  (:require town\lib\http\templating)
+  (:require town\lib\struct\dynamic-table)
+  (:require town\app\admin\dashboard)
   (:use iors_usd\lib\struct\Validator)
   (:use Pinq\Collection)
   (:use Exception))

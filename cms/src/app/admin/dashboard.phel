@@ -1,5 +1,5 @@
-(ns iors-usd\app\admin\dashboard
-  (:require iors-usd\lib\http\templating :as t))
+(ns town\app\admin\dashboard
+  (:require town\lib\http\templating :as t))
 
 (defn render
   [contents]

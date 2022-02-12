@@ -1,7 +1,7 @@
-(ns iors-usd\app\router
-  (:require iors-usd\app\pages\admin :as admin)
-  (:require iors-usd\app\pages\map :as map)
-  (:require iors-usd\lib\http\req :as std-req))
+(ns town\app\router
+  (:require town\app\pages\admin :as admin)
+  (:require town\app\pages\map :as map)
+  (:require town\lib\http\req :as std-req))
 
 (defn route
   [q]

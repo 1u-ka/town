@@ -1,6 +1,4 @@
-from php-fpm
+from php:7-fpm
 
-copy . /opt/iors-usd/cms
-workdir /opt/iors-usd/cms/public
-
-cmd php-fpm
+copy . /opt/town/cms
+workdir /opt/town/cms/public

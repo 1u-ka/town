@@ -1,4 +1,4 @@
-(ns iors-usd\chain
+(ns town\chain
   (:require iors-usd\app\router :as router)
   (:use Exception))
 

@@ -1,6 +1,6 @@
-(ns iors-usd\app\pages\admin
-  (:require iors-usd\app\admin\dashboard)
-  (:require iors-usd\app\pages\map))
+(ns town\app\pages\admin
+  (:require town\app\admin\dashboard)
+  (:require town\app\pages\map))
 
 (defn index
   [q]

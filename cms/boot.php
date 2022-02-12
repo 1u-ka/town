@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use iors_usd\Router;
+use town\Router;
 
 use Phel\Interop\PhelCallerTrait;
 use Phel\Phel;
@@ -25,11 +25,11 @@ class Main {
     $q->POST = $json($_POST);
     $q->GET  = $json($_GET);
 
-    return $this->callPhel('iors-usd\chain',
+    return $this->callPhel('town\chain',
                            'execute',
                            $q);
   }
 }
 
-Phel::run(__DIR__, 'iors-usd\\chain');
+Phel::run(__DIR__, 'town\\chain');
 print (new Main)->handle();

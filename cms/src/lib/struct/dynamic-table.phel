@@ -1,5 +1,5 @@
-(ns iors-usd\lib\struct\dynamic-table
-  (:require iors-usd\lib\http\templating :as t))
+(ns town\lib\struct\dynamic-table
+  (:require town\lib\http\templating :as t))
 
 (defn make-col
   [col]

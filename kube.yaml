@@ -3,16 +3,16 @@ kind: ConfigMap
 metadata:
   name: nginx-configmap
 data:
-  iors-usd.conf: |
+  town.conf: |
     server {
 
       listen          80;
-      server_name     iors-usd.loc;
+      server_name     town.loc;
 
       error_log       /var/log/nginx/error.log debug;
       access_log      /var/log/nginx/access.log main;
 
-      root /opt/iors-usd/cms/public;
+      root /opt/town/cms/public;
       index index.php index.htm index.html;
 
       location /static {
@@ -24,7 +24,7 @@ data:
 
         try_files $uri $uri/ /index.php?q=$request_uri;
 
-        fastcgi_pass php:9000;
+        fastcgi_pass localhost:9000;
         fastcgi_index index.php;
 
         include fastcgi_params;
@@ -38,11 +38,11 @@ data:
 apiVersion: v1
 kind: Service
 metadata:
-  name: iors-usd
+  name: x
 spec:
   clusterIP: 10.152.183.18
   selector:
-    app: iors-usd
+    app: x
   ports:
     - name: ng
       protocol: TCP
@@ -51,36 +51,36 @@ spec:
     - name: api
       protocol: TCP
       port: 8080
-      targetPort: 8080
+      targetPort: 80
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: iors-usd-pod
+  name: town
 spec:
   serviceName: iors-usd-service
   replicas: 1
   selector:
     matchLabels:
-      app: iors-usd
+      app: z
   template:
     metadata:
       labels:
-        app: iors-usd
+        app: z
     spec:
       containers:
         - name: app
-          image: iors-usd-app
+          image: town-app
           imagePullPolicy: Never
         - name: cms
-          image: iors-usd-cms
+          image: town-cms
           imagePullPolicy: Never
         - name: nginx
           image: nginx
           volumeMounts:
             - name: nginx-config
-              mountPath: /etc/nginx/nginx.conf
-              subPath: .
+              mountPath: /etc/nginx/conf.d/nginx.conf
+              subPath: town.conf
       volumes:
         - name: nginx-config
           configMap:
