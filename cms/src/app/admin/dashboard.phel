@@ -1,0 +1,6 @@
+(ns town\app\admin\dashboard
+  (:require town\lib\http\templating :as t))
+
+(defn render
+  [contents]
+  (t/page contents ))

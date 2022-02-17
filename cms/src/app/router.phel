@@ -1,0 +1,18 @@
+(ns town\app\router
+  (:require town\app\pages\admin :as admin)
+  (:require town\app\pages\map :as map)
+  (:require town\lib\http\req :as std-req))
+
+(defn route
+  [q]
+  (-> (std-req/get-path q)
+      (php/sscanf "/map/get/%d")
+      (first))
+  (cond
+    (std-req/route? q "GET"  "map/get") (map/get q 1)
+
+    (std-req/route? q "GET"  "admin") (admin/index q)
+    (std-req/route? q "GET"  "admin/maps") (admin/maps q)
+    (std-req/route? q "GET"  "admin/maps/new") (map/create q)
+    (std-req/route? q "POST" "admin/maps/new") (map/store q)
+    :else 404))

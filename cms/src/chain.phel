@@ -1,0 +1,13 @@
+(ns town\chain
+  (:require iors-usd\app\router :as router)
+  (:use Exception))
+
+(defn run
+  [req]
+  (router/route req))
+
+(defn execute
+  [req]
+  (try
+    (run req)
+    (catch Exception e (php/-> e (getMessage)))))

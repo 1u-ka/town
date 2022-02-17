@@ -1,0 +1,9 @@
+(ns town\lib\wp\req)
+
+(defn param
+  [q n]
+  (php/-> q (get_param n)))
+
+(defn route?
+  [q route]
+  (php/strstr (php/-> q (get_route)) route))
