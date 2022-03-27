@@ -4,6 +4,7 @@
             [clojure.data.json :as json]  
             [reitit.ring :as ring]
             [ring.adapter.jetty :as jetty]
+            [ring.middleware.cors :refer [wrap-cors]]
             [urban.db :as db]
             [urban.maps :as maps]
             [urban.pages :as pages]))
@@ -14,7 +15,10 @@
     [["/" {:status 200
            :body "OK"}]
      maps/routes
-     pages/routes])
+     pages/routes]
+    {:data {:middleware [[wrap-cors
+                          :access-control-allow-origin [#"localhost:4203"]
+                          :access-control-allow-methods [:get :post :put :delete]]]}})
    (ring/create-default-handler)))
 
 (defonce server (atom nil))

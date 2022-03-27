@@ -11,3 +11,7 @@ pom.xml.asc
 .hgignore
 .hg/
 .cpcache/*
+
+node_modules/
+.shadow-cljs/
+resources/public/js/

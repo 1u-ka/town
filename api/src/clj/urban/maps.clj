@@ -40,9 +40,9 @@
 (def routes
   ["/maps" {:get map->list
             :post {:parameters {:body map->struct}
-                   :handler map->store}}
+                   :handler db/map->create}}
    ["/maps/:mid" {:parameters {:path {:mid s/Int}}
-                 :get map->show}]
+                 :get db/map->show}]
    "/tiles" {}
    ["/tiles/:tid" {:parameters {:path {:tid s/Int}}
-                   :get tile->show}]])
+                   :get db/tile->show}]])
