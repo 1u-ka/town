@@ -1,21 +1,19 @@
 (ns urban.core
   (:require [ajax.core :refer [GET]]
-            [helix.core :refer [defnc $]]
+            [helix.core :refer [defnc $ <>]]
+            [helix.hooks :as hooks]
             [helix.dom :as d]
-            ["react-dom" :as dom]))
-
-(defn nav []
-  (d/nav
-   (d/div
-    (d/h2 "logotype")
-    (d/a {:href "/"} "home")
-    (d/a {:href "/about"} "about"))))
+            ["react-dom" :as dom]
+            [urban.components.nav]))
 
 (defn app []
-  (d/div
-   ($ nav)
+  (hooks/use-effect
+   :once (GET "http://google.com"
+              {:handler (fn [res] (.log js/console res))}))
+  (<>
+   ($ urban.components.nav/nav)
    (d/div {:class "container"}
           (d/div "hello world"))))
 
-(defn ^:export init []
+(defn ^:export ^:dev/after-load init []
   (dom/render ($ app) (js/document.getElementById "app")))
