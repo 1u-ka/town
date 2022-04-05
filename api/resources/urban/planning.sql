@@ -14,13 +14,13 @@ create table if not exists maps(
 select *
 from maps;
 
--- :name get-map-by-id :? :*
+-- :name map->show :? :*
 select *
 from maps
 where
   id = :id;
 
--- :name create-map :? :*
+-- :name map->create :? :*
 insert into maps(width, height, description)
 values (:width, :height, :description);
 
@@ -40,3 +40,9 @@ create table if not exists tiles(
 -- :name create-tile :? :*
 insert into tiles(coordx, coordy, terrain, symbol, map, page)
 values (:coordx, :coordy, :terrain, :symbol, :map, :page);
+
+-- :name tile->show ?: :*
+select *
+from tiles
+where
+  id = :id;

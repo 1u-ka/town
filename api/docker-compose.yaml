@@ -11,5 +11,20 @@ services:
       - ./storage/pg/data:/var/lib/postgresql/data
     ports:
       - 5434:5434
-  # clj:
-  # ng:
+  clj:
+    image: clojure
+    command:
+      - -M
+      - urban.core
+    restart: always
+    volumes:
+      - .:/opt/town
+    working_dir: /opt/town
+  cljs:
+    build:
+      context: ./docker/cljs
+    command:
+      - yarn
+      - start
+    volumes:
+      - .:/opt/town

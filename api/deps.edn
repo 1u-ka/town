@@ -1,6 +1,9 @@
-{:paths ["src/clj"]
- :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+{:paths ["src/clj" "resources"]
+ :deps {metosin/reitit-ring {:mvn/version "0.1.0"}
+        org.clojure/clojure {:mvn/version "1.10.3"}
         org.clojure/data.json {:mvn/version "2.4.0"}
-        metosin/reitit-ring {:mvn/version "0.1.0"}
-        ring-cors {:mvn/version "0.1.13"}
+        com.layerware/hugsql {:mvn/version "0.5.1"}
+        org.postgresql/postgresql {:mvn/version "42.2.2"}
+        prismatic/schema {:mvn/version "1.2.0"}
+        ring-cors/ring-cors {:mvn/version "0.1.13"}
         ring/ring-jetty-adapter {:mvn/version "1.7.1"}}}

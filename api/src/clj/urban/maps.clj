@@ -1,5 +1,6 @@
 (ns urban.maps
-  (:require [urban.db :as db]))
+  (:require [urban.db :as db]
+            [schema.core :as s]))
 
 (def map->struct {:title s/Str
                   :contents s/Str})
