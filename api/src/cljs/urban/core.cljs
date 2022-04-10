@@ -4,16 +4,33 @@
             [helix.hooks :as hooks]
             [helix.dom :as d]
             ["react-dom" :as dom]
-            [urban.components.nav]))
+            ["react-dom/client" :refer [createRoot]]
+            ["react-router-dom" :refer [BrowserRouter Routes Route Switch]]
+            [urban.components.geomap :refer [geomap]]
+            [urban.components.nav :refer [nav]]
+            [urban.components.page :refer [page]))
 
-(defn app []
-  (hooks/use-effect
-   :once (GET "http://google.com"
-              {:handler (fn [res] (.log js/console res))}))
+(defnc xyz [props]
+  (js/console.log "!@#$")
   (<>
-   ($ urban.components.nav/nav)
-   (d/div {:class "container"}
-          (d/div "hello world"))))
+   (d/div "abcascasdasdqwd!!!!!@!#!@#!@#@!Q#")))
+
+(defnc app [props]
+  (hooks/use-effect
+   :once (GET "/assets/map.json"
+              {:handler #(.log js/console %)}))
+  (<>
+   ($ BrowserRouter
+      (d/div
+       (d/div "!@#!@#!@#!@#")
+       (d/div {:class "container"}
+              (d/div "hello world")))
+      ($ Routes
+         ($ Route {:path "/" :component xyz})
+         ($ Route {:path "/pages/{pid}"} page)
+         ($ Route {:path "/maps/{mid}") geomap)))))
 
 (defn ^:export ^:dev/after-load init []
-  (dom/render ($ app) (js/document.getElementById "app")))
+  (. (createRoot (js/document.getElementById "app"))
+     render
+     ($ app)))

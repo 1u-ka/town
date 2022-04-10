@@ -2,7 +2,8 @@
   (:require [helix.core :refer [defnc]]
             [helix.dom :as d]))
 
-(defn nav []
+(defn ^:export nav [props]
+  (js/console.log "AAAAAAAAAAAAAAAAAAAA")
   (d/nav
    (d/div
     (d/h2 "logotype")

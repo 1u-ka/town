@@ -1,8 +1,8 @@
 {:source-paths ["src/cljs"]
- :nrepl {:port 9000}
- :dependencies [[cider/cider-nrepl "0.21.0"]
+ ;; :nrepl {:port 9000}
+ :dependencies [;;[cider/cider-nrepl "0.21.0"]
                 [cljs-ajax "0.8.0"]
-                [lilactown/helix "0.0.12"]]
+                [lilactown/helix "0.1.5"]]
  :builds {:urban {:target :browser
                   :compiler-options {:output-feature-set :es6}
                   :output-dir "resources/public/js"
