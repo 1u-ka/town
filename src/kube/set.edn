@@ -1,0 +1,13 @@
+{def/from ["stateful-set"]
+ def/name "town"
+ :spec
+ {:containers
+  {"pg"
+   {:image "postgres:12"
+    :env
+    {"POSTGRES_DB" "urban"
+     "POSTGRES_USER" "council"
+     "POSTGRES_PASSWORD" "abcd"}
+    :ports
+    {:http
+     {:containerPort 5432}}}}}}

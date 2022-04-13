@@ -1,0 +1,5 @@
+{def/from ["net/ingress"]
+ def/name "entrypoint"
+ def/host {:name "town.loc"
+           :path "/"
+           :target "town-service"}}

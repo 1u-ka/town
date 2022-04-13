@@ -8,7 +8,7 @@
             ["react-router-dom" :refer [BrowserRouter Routes Route Switch]]
             [urban.components.geomap :refer [geomap]]
             [urban.components.nav :refer [nav]]
-            [urban.components.page :refer [page]))
+            [urban.components.page :refer [page]]))
 
 (defnc xyz [props]
   (js/console.log "!@#$")
@@ -28,7 +28,7 @@
       ($ Routes
          ($ Route {:path "/" :component xyz})
          ($ Route {:path "/pages/{pid}"} page)
-         ($ Route {:path "/maps/{mid}") geomap)))))
+         ($ Route {:path "/maps/{mid}"} geomap)))))
 
 (defn ^:export ^:dev/after-load init []
   (. (createRoot (js/document.getElementById "app"))

@@ -1,0 +1,8 @@
+{def/from ["net/service"]
+ def/name "town-service"
+ def/ip   "10.96.0.11"
+ def/target "mayor"
+ def/ports {"app-passthrough"
+            {:protocol "TCP"
+             :port 80
+             :targetPort 80}}}

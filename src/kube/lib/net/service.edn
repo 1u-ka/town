@@ -1,0 +1,11 @@
+{:api-version "v1"
+ :kind "Service"
+ :metadata
+ {:name ref/name
+  :labels
+  {:service ref/target}}
+ :spec
+ {:cluster-ip ref/ip
+  :selector
+  {:app ref/target}
+  :ports ref/ports}}
