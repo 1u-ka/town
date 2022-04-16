@@ -1,0 +1,16 @@
+[[nil
+  nil
+  nil
+  nil
+  nil
+  nil
+  nil
+  nil
+  {:id 1,
+   :terrain "center-center",
+   :symbol "Museum",
+   :options
+   [{:text "add sponsor/investment round"}
+    {:text "add submap"}
+    {:text "add details"}],
+   :morphs [{:symbol "Grass"} {:symbol "Park"} {:symbol "Cafe"}]}]]

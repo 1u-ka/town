@@ -1,7 +1,6 @@
 {:source-paths ["src/cljs"]
  ;; :nrepl {:port 9000}
- :dependencies [;;[cider/cider-nrepl "0.21.0"]
-                [cljs-ajax "0.8.0"]
+ :dependencies [[lambdaisland/fetch "1.0.41"]
                 [lilactown/helix "0.1.5"]]
  :builds {:urban {:target :browser
                   :compiler-options {:output-feature-set :es6}

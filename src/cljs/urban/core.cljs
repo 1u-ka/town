@@ -1,6 +1,5 @@
 (ns urban.core
-  (:require [ajax.core :refer [GET]]
-            [helix.core :refer [defnc $ <>]]
+  (:require [helix.core :refer [defnc $ <>]]
             [helix.hooks :as hooks]
             [helix.dom :as d]
             ["react-dom" :as dom]
@@ -11,26 +10,21 @@
             [urban.components.page :refer [page]]))
 
 (defnc xyz [props]
-  (js/console.log "!@#$")
   (<>
-   (d/div "abcascasdasdqwd!!!!!@!#!@#!@#@!Q#")))
+   (d/div "homepage compo")))
 
 (defnc app [props]
-  (hooks/use-effect
-   :once (GET "/assets/map.json"
-              {:handler #(.log js/console %)}))
   (<>
+   ($ nav)
    ($ BrowserRouter
       (d/div
-       (d/div "!@#!@#!@#!@#")
        (d/div {:class "container"}
-              (d/div "hello world")))
-      ($ Routes
-         ($ Route {:path "/" :component xyz})
-         ($ Route {:path "/pages/{pid}"} page)
-         ($ Route {:path "/maps/{mid}"} geomap)))))
+              (d/div "?")
+              ($ Routes
+                 ($ Route {:path "/" :element ($ xyz)})
+                 ($ Route {:path "/pages/:slug" :element ($ page)})
+                 ($ Route {:path "/maps/:mid" :element ($ geomap)})))))))
 
 (defn ^:export ^:dev/after-load init []
-  (. (createRoot (js/document.getElementById "app"))
-     render
-     ($ app)))
+  (let [root (createRoot (js/document.getElementById "app"))]
+    (.render root ($ app))))

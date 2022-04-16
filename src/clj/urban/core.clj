@@ -1,7 +1,7 @@
 (ns urban.core
   (:require [clojure.pprint :as pp]
             [clojure.string :as str]
-            [clojure.data.json :as json]  
+            [clojure.data.json :as json]
             [reitit.ring :as ring]
             [ring.adapter.jetty :as jetty]
             [ring.middleware.cors :refer [wrap-cors]]
