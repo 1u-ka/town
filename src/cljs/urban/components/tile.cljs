@@ -11,5 +11,5 @@
 (defnc ^:export tile [{:keys [t]}]
   (let [[cx set-cx] (h/use-context void)]
     (d/span {:class "tile"
-             :on-click #(set-cx (assoc cx :tile-in-focus (:id t 1)))}
-            (:id t 1))))
+             :on-click #(set-cx (assoc (assoc cx :nav? true) :tile-in-focus (:id t 1)))}
+            (:symbol t 1))))

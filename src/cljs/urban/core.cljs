@@ -15,15 +15,15 @@
    (d/div "homepage compo")))
 
 (defnc app [props]
-  (let [[nav? set-nav?] (h/use-state false)]
+  (let [[cx set-cx] (h/use-context void)]
     (<>
-     ($ nav {:nav? nav?})
+     ($ nav {:nav? (:nav? cx false)})
      ($ BrowserRouter
         (d/div
          (d/div {:class "container"}
                 (d/div "?")
                 (d/a {:id "menu-activator"
-                      :on-click #(set-nav? (not nav?))} "|||")
+                      :on-click #(set-cx (assoc cx :nav? (not (:nav? cx))))} "|||")
                 ($ Routes
                    ($ Route {:path "/" :element ($ default)})
                    ($ Route {:path "/pages/:slug" :element ($ page)})
