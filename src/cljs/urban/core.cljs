@@ -25,6 +25,7 @@
                  ($ Route {:path "/pages/:slug" :element ($ page)})
                  ($ Route {:path "/maps/:mid" :element ($ geomap)})))))))
 
+(defonce root (createRoot (js/document.getElementById "app")))
+
 (defn ^:export ^:dev/after-load init []
-  (let [root (createRoot (js/document.getElementById "app"))]
-    (.render root ($ app))))
+  (.render root ($ app)))
