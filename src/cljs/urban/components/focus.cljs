@@ -10,7 +10,7 @@
 (defnc ^:export focus
   [{:keys [tid]}]
   (let [[tile set-tile] (h/use-state {})]
-    (h/use-effect :once
+    (h/use-effect :auto-deps
                   (go (-> (str "/assets/tiles/" tid ".edn")
                           (fetch/get :accept :edn)
                           (<p!)
