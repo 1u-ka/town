@@ -4,14 +4,12 @@
             [cljs.core.async.interop :refer [<p!]]
             [cljs.reader :refer [read-string]]
             [clojure.walk :refer [keywordize-keys]]
-            [helix.core :refer [<> defnc]]
+            [helix.core :refer [$ <> defnc]]
             [helix.dom :as d]
             [helix.hooks :as h]
-            [lambdaisland.fetch :as fetch]))
+            [lambdaisland.fetch :as fetch]
+            [urban.components.tile :refer [tile]]))
 
-(defrecord Option [text])
-(defrecord Morph [symbol])
-(defrecord Tile [id terrain symbol options morphs])
 (defrecord Geomap [width height preface])
 
 (defn map->coord [m x y]
@@ -56,8 +54,7 @@
      (d/div {:class "section"
              :style {:width "320px"}}
       (map
-       (fn [tile]
-         (d/a {:key (-> js/Math .random)
-               :class "tile"}
-              (:id tile 1)))
+       (fn [t]
+         (d/a {:key (js/Math.random)}
+              ($ tile {:t t})))
        tileset)))))
