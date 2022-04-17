@@ -6,7 +6,7 @@
             [clojure.walk :refer [keywordize-keys]]
             [helix.core :refer [<> defnc]]
             [helix.dom :as d]
-            [helix.hooks :as hooks]
+            [helix.hooks :as h]
             [lambdaisland.fetch :as fetch]))
 
 (defrecord Option [text])
@@ -19,7 +19,6 @@
 
 (defn genr8
   ([f w h x y tiles]
-   (js/console.log x y)
    (cond (< x w)
          (genr8 f w h (inc x) y (conj tiles (map->coord f x y)))
          (< y h)
@@ -32,9 +31,9 @@
 
 (defnc ^:export geomap []
   (let [{mid :mid} (-> (useParams) (js->clj) (keywordize-keys))
-        [geomap set-geomap] (hooks/use-state {:preface "Loading geomap.."})
-        [tileset set-tileset] (hooks/use-state {})]
-    (hooks/use-effect
+        [geomap set-geomap] (h/use-state {:preface "Loading geomap.."})
+        [tileset set-tileset] (h/use-state {})]
+    (h/use-effect
      :once
      (go (-> "/assets/geomap.edn"
              (fetch/get :accept :edn)
@@ -42,7 +41,7 @@
              (:body)
              (read-string)
              (set-geomap))))
-    (hooks/use-effect
+    (h/use-effect
      :once
      (go (-> "/assets/tiles.edn"
              (fetch/get :accept :edn)
@@ -54,7 +53,6 @@
     (<>
      (d/h1 (:preface geomap))
      (d/p "geomap compo")
-     (js/console.log (prn tileset))
      (d/div {:class "section"
              :style {:width "320px"}}
       (map
