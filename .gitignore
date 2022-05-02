@@ -14,5 +14,7 @@ pom.xml.asc
 
 node_modules/
 .shadow-cljs/
+.clj-kondo/
+.cpcache/
 resources/public/js/
 storage/pg/data/

@@ -1,6 +1,6 @@
 (ns urban.components.geomap
   (:require ["react-router-dom" :refer [useParams]]
-            [cljs.core.async :refer [go]]
+            [cljs.core.async :refer [future go]]
             [cljs.core.async.interop :refer [<p!]]
             [cljs.reader :refer [read-string]]
             [clojure.walk :refer [keywordize-keys]]
@@ -8,7 +8,8 @@
             [helix.dom :as d]
             [helix.hooks :as h]
             [lambdaisland.fetch :as fetch]
-            [urban.components.tile :refer [tile]]))
+            [urban.components.tile :refer [tile]])
+  (:require-macros [fetch]))
 
 (defrecord Geomap [width height preface])
 
@@ -33,12 +34,7 @@
         [tileset set-tileset] (h/use-state {})]
     (h/use-effect
      :once
-     (go (-> "/assets/geomap.edn"
-             (fetch/get :accept :edn)
-             (<p!)
-             (:body)
-             (read-string)
-             (set-geomap))))
+     (fetch/from "/assets/geomap.edn" 'set-geomap))
     (h/use-effect
      :once
      (go (-> "/assets/tiles.edn"

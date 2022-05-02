@@ -1,4 +1,4 @@
-{:source-paths ["src/cljs"]
+{:source-paths ["src/cljs" "lib/cljs"]
  ;; :nrepl {:port 9000}
  :dependencies [[lambdaisland/fetch "1.0.41"]
                 [lilactown/helix "0.1.5"]]
