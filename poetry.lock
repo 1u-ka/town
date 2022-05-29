@@ -195,8 +195,8 @@ pyodbc = ["pyodbc"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "3.8"
-content-hash = "d177c881b3668d1815cb590afe610322e4357d1eb471a27a9b8ba6ce75dfc81d"
+python-versions = "3.8.1"
+content-hash = "6e81aa126f5b80583520e983e410842f19a9d6d7cf4e2c6d53dbf632ffc29151"
 
 [metadata.files]
 anyio = [
