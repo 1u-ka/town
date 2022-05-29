@@ -1,2 +1,1 @@
-api: poetry run python town.py
-# app: yarn start --port 8080
+web: poetry run uvicorn api.main:api
