@@ -1,1 +1,1 @@
-web: poetry run uvicorn api.main:api
+web: uvicorn api.main:api
