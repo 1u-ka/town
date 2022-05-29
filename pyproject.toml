@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "town"
+version = "0.1.0"
+description = ""
+authors = ["anonymous <anonymous>"]
+
+[tool.poetry.dependencies]
+python = "3.8"
+psycopg2 = "2.9.3"
+fastapi = "0.78.0"
+toolz = "0.11.2"
+uvicorn = "0.17.6"
+
+[tool.poetry.dev-dependencies]
+yoyo-migrations = "7.3.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

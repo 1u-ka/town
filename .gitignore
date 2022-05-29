@@ -18,3 +18,10 @@ node_modules/
 .cpcache/
 resources/public/js/
 storage/pg/data/
+
+__pycache__/
+*.py[cod]
+
+*.spec
+build/
+dist/

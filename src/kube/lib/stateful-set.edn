@@ -1,4 +1,0 @@
-{:api-version "apps/v1"
- :kind "StatefulSet"
- :metadata
- {:name ref/name}}

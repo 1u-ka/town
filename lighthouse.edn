@@ -1,2 +1,0 @@
-{:output-format :yaml
- :processor :kube}
