@@ -1,1 +1,1 @@
-web: uvicorn api.main:api
+web: uvicorn api.main:api --port 8080
