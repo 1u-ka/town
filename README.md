@@ -1,6 +1,6 @@
 # Town
 
-project.
+project. 
 
 See [Contributing](CONTRIBUTING.md) for development info.
 
