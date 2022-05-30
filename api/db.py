@@ -18,4 +18,4 @@ class DB:
     curs.execute(stmt)
     return curs.fetchall()
 
-db = DB(os.environ.get('DATABASE_URI'))
+db = DB(os.environ.get('DATABASE_URL'))
