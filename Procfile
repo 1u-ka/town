@@ -1,1 +1,1 @@
-web: uvicorn api.main:api --host=0.0.0.0 --port=${PORT:-5000}
+web: poetry run yoyo apply --database=$DATABASE_URL migrations && uvicorn api.main:api --host=0.0.0.0 --port=${PORT:-5000}
