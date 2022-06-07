@@ -1,0 +1,11 @@
+<div class="container">
+  <header *ngIf="preface">{{ preface }}</header>
+  <hr />
+  <section [attr.style]="style">
+    <a href="#"
+      (click)="onTileSelection(tile)"
+      class="tile"
+      ngClass="{{tile.symbol}}"
+      *ngFor='let tile of tileset'></a>
+  </section>
+</div>
