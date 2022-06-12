@@ -29,7 +29,8 @@ export class MapComponent implements OnInit {
     terrain: 'grass',
     symbol: `Grass`,
     coordx: null,
-    coordy: null
+    coordy: null,
+    styling: null
   }
 
   /** */
@@ -73,6 +74,16 @@ export class MapComponent implements OnInit {
     this.id = mid ? mid : 1
     this.comms.get(`${this.host}/api/maps/${this.id}`).subscribe(this.boot.bind(this))
     // this.tileset$ = this.comms.get('tiles.json')
+  }
+
+  /** */
+  spriting(t: Array<Tile>) : Array<Tile> {
+    return t.map((e: Tile) : Tile => {
+      if (typeof e.terrain !== 'undefined')
+        e.styling = `background:url('${e.terrain}')`
+      
+      return e
+    })
   }
 
   /**
@@ -122,7 +133,11 @@ export class MapComponent implements OnInit {
     // ????
     // ({ this.width, this.height, this.preface } = props)
 
-    let operations: Array<Function> = [this.arrange.bind(this), this.fill.bind(this)]
+    let operations: Array<Function> = [
+      this.spriting.bind(this),
+      this.arrange.bind(this),
+      this.fill.bind(this)
+    ]
     
     this.tileset  = operations.reduce((acc, el) => el(acc), fetched)
     console.log( this.tileset )

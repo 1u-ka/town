@@ -8,7 +8,7 @@ router = APIRouter(
 )
 
 def list(mid: int):
-  results = db.select(['id', 'coordx', 'coordy', 'symbol'],
+  results = db.select(['id', 'coordx', 'coordy', 'symbol', 'terrain'],
                       'select {0} from tiles t where map = %s',
                       mid)
 

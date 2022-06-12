@@ -15,4 +15,7 @@ export interface Tile {
   /** */
   coordx: number,
   coordy: number,
+
+  /** */
+  styling: string
 }
