@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MapComponent } from './map/map.component';
 
 import { Comms } from './comms.service';
+import { Utils } from './utils.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { Comms } from './comms.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [Comms],
+  providers: [Comms, Utils],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

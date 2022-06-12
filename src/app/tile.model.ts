@@ -10,5 +10,9 @@ export interface Tile {
   terrain: string,
 
   /** */
-  symbol: string
+  symbol: string,
+
+  /** */
+  coordx: number,
+  coordy: number,
 }

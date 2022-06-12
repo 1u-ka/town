@@ -5,19 +5,11 @@ import { Observable } from 'rxjs';
 import { Tile } from './tile.model';
 
 @Injectable()
-export class Comms {
-
-  constructor(private http: HttpClient) { }
-
-  /**
-   * @todo   ?
-   */
-  @Output()
-  recontextualize: EventEmitter<Tile> = new EventEmitter
+export class Utils {
 
   /** */
-  get(uri: string = '') : Observable<any> {
-    return this.http.get(`${environment.apiUri}${uri}`);
+  pipe(initial: any, ...functs: Array<Function>) : any {
+    return functs.reduce((acc, el) => el(acc))
   }
 
 }
