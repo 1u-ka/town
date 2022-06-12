@@ -10,15 +10,21 @@ import { Tile } from '../tile.model';
 
 export class MenuComponent implements OnInit {
 
+  /** */
   contextual: any;
   links: any[];
+
+  /** */
+  tileCreator: boolean = false
 
   /** */
   visible: boolean = false;
 
   constructor(
     protected comms: Comms
-  ) { }
+  ) {
+
+  }
 
   /**
    * @todo dynamically fetch navigation from a backend
@@ -36,8 +42,12 @@ export class MenuComponent implements OnInit {
   }
 
   /** */
-  onRenderToggle(e: any) : void
-  {
+  onTileCreatorToggle() : any {
+    this.tileCreator = !this.tileCreator
+  }
+
+  /** */
+  onRenderToggle(e: any) : void {
     this.visible = !this.visible
   }
 }

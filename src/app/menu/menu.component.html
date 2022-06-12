@@ -35,13 +35,20 @@
           </div>
         </div>
 
-
+        <a (click)="onTileCreatorToggle()">Create new tile</a>
+        <fieldset *ngIf='this.tileCreator'>
+          <hr />
+          <label for="sprite">Sprite</label>
+          <input id="sprite" type="text" name="sprite">
+          <input hidden type="number" name="coordx" value="" />
+          <input hidden type="nubmer" name="coordy" value="" />
+          <input type="file" name="upload" />
+        </fieldset>
 
         <fieldset *ngIf="contextual.options" class="form-group row">
           <label for="" class="col-form-label">Additionally:</label>
           <div *ngFor='let option of contextual.options'>
-            <button class="btn"
-              id="{{ option.id }}">+</button>
+            <button class="btn" id="{{ option.id }}">+</button>
             <label class="form-check-label"for="{{ option.id }}">{{ option.text }}</label>
           </div>
         </fieldset>
